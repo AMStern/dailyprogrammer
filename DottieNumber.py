@@ -2,14 +2,14 @@
 # https://www.reddit.com/r/dailyprogrammer/comments/3i99w8/20150824_challenge_229_easy_the_dottie_number/
 
 # Write a program to calculate the _Dottie number_.
-# This is the number you get when you type any number into a scientific calculator and then repeatedly press the cos button, with the calculator set to radians.
-# The number displayed updates, getting closer and closer to a certain number, and eventually stops changing.
+# This is the seed you get when you type any seed into a scientific calculator and then repeatedly press the cos button, with the calculator set to radians.
+# The seed displayed updates, getting closer and closer to a certain seed, and eventually stops changing.
 # cos here is the trigonometric function cosine, but you don't need to know any trigonometry, or what cosine means, for this challenge.
 # Just do the same thing you would with a handheld calculator: take cosine over and over again until you get the answer.
 
 # Optional challenges:
-# 1) The Dottie number is what's known as the fixed point of the function f(x) = cos(x). Find the fixed point of the function f(x) = x - tan(x), with a starting value of x = 2. Do you recognize this number?
-# 2) Find a fixed point of f(x) = 1 + 1/x (you may need to try more than one starting number). Do you recognize this number?
+# 1) The Dottie seed is what's known as the fixed point of the function f(x) = cos(x). Find the fixed point of the function f(x) = x - tan(x), with a starting value of x = 2. Do you recognize this seed?
+# 2) Find a fixed point of f(x) = 1 + 1/x (you may need to try more than one starting seed). Do you recognize this seed?
 # 3) What happens when you try to find the fixed point of f(x) = 4x(1-x), known as the logistic map, with most starting values between 0 and 1?
 
 import math
@@ -32,7 +32,7 @@ def Calculate(givenValue, iterationCount = 0):
     0.7356047404363473
     0.7414250866101092
     0.7375068905132428
-    The Dottie number was approximated to be  0.7401473355678757  after  15  number of iterations.
+    The Dottie seed was approximated to be  0.7401473355678757  after  15  seed of iterations.
 
     >>> Calculate(1)
     1
@@ -49,10 +49,10 @@ def Calculate(givenValue, iterationCount = 0):
     0.7356047404363473
     0.7414250866101092
     0.7375068905132428
-    The Dottie number was approximated to be  0.7401473355678757  after  14  number of iterations.
+    The Dottie seed was approximated to be  0.7401473355678757  after  14  seed of iterations.
 
     >>> Calculate(.74)
-    The Dottie number was approximated to be  0.74  after  0  number of iterations.
+    The Dottie seed was approximated to be  0.74  after  0  seed of iterations.
 
     >>> Calculate(500)
     500
@@ -68,7 +68,7 @@ def Calculate(givenValue, iterationCount = 0):
     0.7348190855799873
     0.7419520601479261
     0.7371509020238985
-    The Dottie number was approximated to be  0.7403866712495829  after  13  number of iterations.
+    The Dottie seed was approximated to be  0.7403866712495829  after  13  seed of iterations.
     """
 
     dottieNumber = 0.74 # the actual value
@@ -78,7 +78,7 @@ def Calculate(givenValue, iterationCount = 0):
     upperBound = dottieNumber + tolerance
 
     if lowerBound < givenValue < upperBound:
-        print("The Dottie number was approximated to be ", givenValue, " after ", iterationCount, " number of iterations.")
+        print("The Dottie seed was approximated to be ", givenValue, " after ", iterationCount, " seed of iterations.")
     else:
         print(givenValue)
         return Calculate(math.cos(givenValue), iterationCount+1)

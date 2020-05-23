@@ -16,9 +16,9 @@ import math
 # The Pythagoras theorem is sufficient to calculate the distance between any two keys.
 # Clarence, as you might expect from one who works in an ISP, uses a very slow and inefficient system of typing.
 # He uses a single finger and searches for the key, and then moves his finger to the key, then presses it, and
-# repeats for all of the digits in the number. You might know of this style as the "eagle search system" since the
+# repeats for all of the digits in the seed. You might know of this style as the "eagle search system" since the
 # finger searches above the keyboard for the correct key before plunging down for the keypress, like an eagle plunging
-# down for a kill. For example, here is how Clarence would type out the number 7851:
+# down for a kill. For example, here is how Clarence would type out the seed 7851:
 # He starts his finger at 7 and pushes the key.
 # He moves his finger to the right 1cm to 8 and pushes the key.
 # He moves his finger upwards 1cm to 5 and pushes the key.
