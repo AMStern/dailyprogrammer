@@ -1,5 +1,5 @@
 import unittest
-from FractionReduction import RationalNumber, Simplify, MalformedExpression
+from challenge277_SimplifyingFractions.SimplifyFractions import RationalNumber, Simplify, MalformedExpression
 
 class FractionReduction_Test(unittest.TestCase):
 

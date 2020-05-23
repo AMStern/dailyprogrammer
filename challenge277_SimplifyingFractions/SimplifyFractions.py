@@ -1,5 +1,8 @@
 import math
 
+# Daily Programmer Challenge 277 (7/25/16): Simplifying Fractions
+# https://www.reddit.com/r/dailyprogrammer/comments/4uhqdb/20160725_challenge_277_easy_simplifying_fractions/
+
 def Simplify(rationalList):
     reduced = ""
     
