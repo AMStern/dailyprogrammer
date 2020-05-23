@@ -9,7 +9,7 @@ import math
 # proper divisors is greater than the number itself. As an example, consider the number 21. Its divisors are 1, 3, 7
 # and 21, and their sum is 32. Because 32 is less than 2 x 21, the number 21 is deficient. Its deficiency
 # is 2 x 21 - 32 = 10. The integer 12 is the first abundant number. Its divisors are 1, 2, 3, 4, 6, and 12, and their
-# sum is 28. Because 28 is greater than 2 x 12, the number 12 is abundant. It's abundant by is 28 - 24 = 4.
+# sum is 28. Because 28 is greater than 2 x 12, the seed 12 is abundant. It's abundant by is 28 - 24 = 4.
 
 # Examples:
 #       get_result(220) -> 64
@@ -20,76 +20,59 @@ import math
 #       get_result(85) -> -62
 #       get_result(134) -> -64
 
+# NOTE: Author of this challenge had a mistaken initial spec, from reddit link at the top:
+# "I had fouled up my implementation, 9 and 111 are deficient, not perfect.
+# See http://sites.my.xs.edu.ph/connor-teh-14/aste/mathematics-asteroids/perfect-abundant-and-deficient-numbers-1-100."
+
 class AbundeficientCalculator():
 
     @staticmethod
-    def is_deficient(number):
-        return AbundeficientCalculator.get_result(number) < 0
+    def is_deficient(seed):
+        return AbundeficientCalculator.get_result(seed) < 0
 
     @staticmethod
-    def is_neither(number):
-        return AbundeficientCalculator.get_result(number) == 0
+    def is_neither(seed):
+        return AbundeficientCalculator.get_result(seed) == 0
 
     @staticmethod
-    def is_abundant(number):
-        return AbundeficientCalculator.get_result(number) > 0
+    def is_abundant(seed):
+        return AbundeficientCalculator.get_result(seed) > 0
 
     @staticmethod
-    def get_result(number):
-        try:
-            properDivisorsList = AbundeficientCalculator.get_proper_divisors(number)
-        except NotImplementedError:
-            return 0
-
-        sumOfDivisorsList = AbundeficientCalculator.sum_proper_divisors(properDivisorsList)
-        return sumOfDivisorsList - 2 * number
+    def get_result(seed):
+        proper_divisors = AbundeficientCalculator.get_proper_divisors(seed)
+        proper_divisor_sum = AbundeficientCalculator.sum_proper_divisors(proper_divisors)
+        return proper_divisor_sum - seed
 
     # This makes use of the 'Direct Search Factorization' algorithm, see here:
     # http://mathworld.wolfram.com/DirectSearchFactorization.html
     @staticmethod
-    def get_proper_divisors(number):
-        properDivisors = []
+    def get_proper_divisors(seed):
+        proper_divisors = []
 
-        for naturalNumber in range(number + 1):
+        for natural_number in range(1, seed):
 
-            if naturalNumber == 0:
-                continue
-
-            # base case
-            if number == 1:
-                properDivisors.append(1)
+            # no values beyond floor(sqrt(seed)) are valid
+            if natural_number > math.floor(math.sqrt(seed)):
                 break
 
-            # no values beyond floor(sqrt(number)) are valid
-            if naturalNumber == math.floor(math.sqrt(number)):
-                break
+            # by definition, the seed is not a proper divisor of itself
+            # if natural_number == seed:
+            #     continue
 
-            if number % naturalNumber == 0:
-                properDivisors.append([naturalNumber, number / naturalNumber])
-                #properDivisors.append(AbundeficientCalculator.get_proper_divisors(naturalNumber))
-                print(properDivisors)
+            if seed % natural_number == 0:
+                proper_divisors.append(natural_number)
 
+                # calculate the value and ensure we're not adding a duplicate
+                result = (int)(seed / natural_number)
+                if result != natural_number and result != seed:
+                    proper_divisors.append(result)
 
-        if len(properDivisors) == 0:
-            raise NotImplementedError("Not able to calculate the list of proper divisors for: ", number)
-
-        return properDivisors
-
-    @staticmethod
-    def sum_proper_divisors(properDivisorList):
-        sumOfProperDivisors = 0
-        for nextDivisor in properDivisorList:
-            sumOfProperDivisors += nextDivisor[0]
-        return sumOfProperDivisors
+        return proper_divisors
 
     @staticmethod
-    def get_type(number):
-        if AbundeficientCalculator.is_abundant(number):
-            return "ABUNDANT"
-        elif AbundeficientCalculator.is_deficient(number):
-            return "DEFICIENT"
-        elif AbundeficientCalculator.is_neither(number):
-            return "NEITHER"
-        else:
-            return "UNKNOWN"
-
+    def sum_proper_divisors(proper_divisors):
+        sum_of_proper_divisors = 0
+        for next_divisor in proper_divisors:
+            sum_of_proper_divisors += next_divisor
+        return sum_of_proper_divisors
