@@ -56,10 +56,6 @@ class AbundeficientCalculator():
             if natural_number > math.floor(math.sqrt(seed)):
                 break
 
-            # by definition, the seed is not a proper divisor of itself
-            # if natural_number == seed:
-            #     continue
-
             if seed % natural_number == 0:
                 proper_divisors.append(natural_number)
 

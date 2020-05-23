@@ -1,5 +1,5 @@
 import unittest
-from AbundeficientNumbers import AbundeficientCalculator
+from challenge243_AbundeficientNumbers.AbundeficientNumbers import AbundeficientCalculator
 
 class AbundeficientNumbers_Test(unittest.TestCase):
     def test_IsAbundant(self):
