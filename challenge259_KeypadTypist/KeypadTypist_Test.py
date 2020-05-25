@@ -1,5 +1,5 @@
 import unittest
-from KeypadTypist import *
+from challenge259_KeypadTypist.KeypadTypist import *
 
 
 class MyTestCase(unittest.TestCase):

@@ -16,17 +16,16 @@ class FractionReduction_Test(unittest.TestCase):
     #    self.assertEqual(7/15, Simplify([1/6, 3/10]))
 
     def test_IntegerIsValid(self):
-        pass
+        self.fail("not implemented")
 
     def test_MissingNumeratorIsInvalid(self):
         self.assertRaises(MalformedExpression, RationalNumber("/2"))
-            
 
     def test_MissingDenumeratorIsInvalid(self):
-        pass
+        self.fail("not implemented")
 
     def test_ComplexFractionIsInvalid(self):
-        pass
+        self.fail("not implemented")
 
 if __name__ == '__main__':
     unittest.main()

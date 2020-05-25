@@ -86,7 +86,7 @@ def IpAddress():
             raise InvalidIpAddressException('The component is not an integer')
 
         # we need each component to be in the range [0, 999]
-        if first < 0 or first > 999 or second < 0 or second > 999 or third < 0 or third > 999 or fourth < 0 or fourth > 999
+        if first < 0 or first > 999 or second < 0 or second > 999 or third < 0 or third > 999 or fourth < 0 or fourth > 999:
             raise InvalidIpAddressException('The component is outside of the valid range of [0, 999]')
 
         # it's valid!

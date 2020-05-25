@@ -1,5 +1,6 @@
 import unittest
-import GarlandWords
+from challenge223_GarlandWords import GarlandWords
+
 
 class GarlandWords_Test(unittest.TestCase):
 
